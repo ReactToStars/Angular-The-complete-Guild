@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Recipe } from '../recipe-list/recipe.model';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
-
-  constructor() { }
+  visibility:string = 'hidden';
+  @Input() recipe:Recipe = new Recipe('', '', '');
+  constructor() {}
 
   ngOnInit(): void {
   }
+
+  dropdownMenu():void{
+    if(this.visibility === 'hidden'){
+      this.visibility = 'visible';
+    }else{
+      this.visibility = 'hidden';
+    }
+  }
+
 
 }

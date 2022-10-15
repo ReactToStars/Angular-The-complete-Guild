@@ -1,0 +1,25 @@
+
+.dropdown{
+    list-style-type: none;
+    margin: 0;
+    background-color: lightblue;
+    padding: 10px;
+    width: 150px;
+    position: absolute;
+    top: 40px;
+    left: -9px;
+    z-index: 1;
+}
+
+.dropdown li a{
+    text-decoration: none;
+    color: black;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.hidden{
+    visibility: hidden;
+}
