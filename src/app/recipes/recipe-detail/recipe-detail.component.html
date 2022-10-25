@@ -1,38 +1,39 @@
-<div class="row mt-3" *ngIf="recipe.name === ''; else selected">
-  <h3>Please select a recipe item!</h3>
+<div class="row mt-5">
+  <div class="col-xs-12">
+    <img [src]="recipe.imagePath" height="300px" width="300px" [alt]="recipe.name" class="img-responsive">
+  </div>
 </div>
-<ng-template #selected>
-  <div class="row mt-5">
-    <div class="col-xs-12">
-      <img [src]="recipe.imagePath" height="300px" width="300px" [alt]="recipe.name" class="img-responsive">
-    </div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{recipe.name}}</h1>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <h1>{{recipe.name}}</h1>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="position-relative" appDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle" appDropdown>
+        Manage Recipe <span class="caret"></span>
+      </button>
+      <ul class="dropdown rounded">
+        <li><a href="#" (click)="addToShoppingList(recipe.ingredients)">To Shopping List</a></li>
+        <li><a href="#">Edit Recipe</a></li>
+        <li><a href="#">Delete Recipe</a></li>
+      </ul>
     </div>
+
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="position-relative">
-        <button type="button" class="btn btn-primary" (click)="dropdownMenu()">Manage Recipe <span class="caret"></span>
-        </button>
-        <ul class="dropdown rounded {{visibility}}">
-          <li><a href="#">To Shopping List</a></li>
-          <li><a href="#">Edit Recipe</a></li>
-          <li><a href="#">Delete Recipe</a></li>
-        </ul>
-      </div>
-    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{recipe.description}}
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      {{recipe.description}}
-    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient.name}} - {{ingredient.amount}}
+      </li>
+    </ul>
   </div>
-  <div class="row">
-    <div class="col-xs-12">
-      Ingredient
-    </div>
-  </div>
-</ng-template>
+</div>

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Ingredient } from 'src/app/shared/ingredient.model';
+import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { Recipe } from '../recipe-list/recipe.model';
 
 @Component({
@@ -8,8 +10,8 @@ import { Recipe } from '../recipe-list/recipe.model';
 })
 export class RecipeDetailComponent implements OnInit {
   visibility:string = 'hidden';
-  @Input() recipe:Recipe = new Recipe('', '', '');
-  constructor() {}
+  @Input() recipe:Recipe = new Recipe('', '', '', []);
+  constructor(private shoppingListService:ShoppingListService) {}
 
   ngOnInit(): void {
   }
@@ -22,5 +24,7 @@ export class RecipeDetailComponent implements OnInit {
     }
   }
 
-
+  addToShoppingList(ingredients:Ingredient[]):void{
+    this.shoppingListService.addIngredients(ingredients);
+  }
 }
