@@ -1,3 +1,10 @@
+nav{
+  background-color: aliceblue;
+  border-bottom: 1px solid lightgrey;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .dropdown{
   list-style-type: none;
   margin: 0;
@@ -14,4 +21,8 @@
 
 .open>.dropdown{
   visibility: visible;
+}
+
+.active{
+  background-color: lightgray;
 }

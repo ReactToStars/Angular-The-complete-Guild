@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
 import { Recipe } from '../recipe-list/recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -10,10 +13,22 @@ import { Recipe } from '../recipe-list/recipe.model';
 })
 export class RecipeDetailComponent implements OnInit {
   visibility:string = 'hidden';
-  @Input() recipe:Recipe = new Recipe('', '', '', []);
-  constructor(private shoppingListService:ShoppingListService) {}
+  // @Input() recipe:Recipe = new Recipe('', '', '', []);
+  recipe:Recipe = new Recipe('', '', '', []);
+  id:number = 0;
+
+  constructor(private recipeService:RecipeService,
+              private route:ActivatedRoute,
+              private router:Router) {}
 
   ngOnInit(): void {
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.recipe = this.recipeService.getRecipe(this.id);
+        }
+      )
   }
 
   dropdownMenu():void{
@@ -25,6 +40,11 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   addToShoppingList(ingredients:Ingredient[]):void{
-    this.shoppingListService.addIngredients(ingredients);
+    this.recipeService.addIngredientsToShoppingList(ingredients);
+  }
+
+  onEditRecipe(){
+    // this.router.navigate(['edit'], {relativeTo:this.route});
+    this.router.navigate(["../", this.id, "edit"], {relativeTo:this.route});
   }
 }
