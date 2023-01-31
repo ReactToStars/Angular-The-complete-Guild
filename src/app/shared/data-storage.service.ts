@@ -16,9 +16,10 @@ export class DataStorageService {
 
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
+    console.log(recipes);
     this.http
       .put(
-        'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json',
+        'https://ng-complete-guide-c820b-default-rtdb.firebaseio.com/recipes.json',
         recipes
       )
       .subscribe(response => {
@@ -29,7 +30,7 @@ export class DataStorageService {
   fetchRecipes() {
     return this.http
       .get<Recipe[]>(
-        'https://ng-course-recipe-book-65f10.firebaseio.com/recipes.json'
+        'https://ng-complete-guide-c820b-default-rtdb.firebaseio.com/recipes.json'
       )
       .pipe(
         map(recipes => {
