@@ -1,0 +1,28 @@
+nav{
+  background-color: aliceblue;
+  border-bottom: 1px solid lightgrey;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dropdown{
+  list-style-type: none;
+  margin: 0;
+  background-color: lightgrey;
+  padding: 10px;
+  width: 100px;
+  position: absolute;
+  top: 40px;
+  left: 0px;
+  z-index: 1;
+  visibility: hidden;
+  border-radius: 5px;
+}
+
+.open>.dropdown{
+  visibility: visible;
+}
+
+.active{
+  background-color: lightgray;
+}
