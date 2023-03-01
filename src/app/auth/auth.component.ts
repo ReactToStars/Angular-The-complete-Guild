@@ -20,7 +20,7 @@ import {
     isLoginMode = true;
     isLoading = false;
     error: string = '';
-    @ViewChild(PlaceholderDirective, { static: false }) alertHost: any; //PlaceholderDirective 
+    @ViewChild(PlaceholderDirective, { static: false }) alertHost: PlaceholderDirective;
   
     private closeSub: Subscription = new Subscription();
   

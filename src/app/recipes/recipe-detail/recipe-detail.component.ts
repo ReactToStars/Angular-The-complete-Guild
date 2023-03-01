@@ -13,12 +13,10 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   visibility:string = 'hidden';
-  recipe:Recipe = new Recipe('', '', '', []);
-  id:number = 0;
+  recipe:Recipe;
+  id:number;
 
-  constructor(private recipeService:RecipeService,
-              private route:ActivatedRoute,
-              private router:Router) {}
+  constructor(private recipeService:RecipeService, private route:ActivatedRoute, private router:Router) {}
 
   ngOnInit(): void {
     this.route.params
@@ -43,7 +41,6 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onEditRecipe(){
-    // this.router.navigate(['edit'], {relativeTo:this.route});
     this.router.navigate(["../", this.id, "edit"], {relativeTo:this.route});
   }
 

@@ -14,7 +14,8 @@ import { LoggingService } from './logging.service';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-    }
+    },
+    LoggingService
   ]
 })
 export class CoreModule {}
